@@ -26,31 +26,33 @@
 Задание 1
 По результатам сканирования Metasploitable были обнаружены следующие открытые TCP-порты и соответствующие им сетевые службы:
 
-Порт	Служба	Пример ПО/версии
-21/tcp	FTP	vsftpd 2.3.4
-22/tcp	SSH	OpenSSH
-23/tcp	Telnet	Linux telnetd
-25/tcp	SMTP	Postfix
-53/tcp	DNS	ISC BIND
-80/tcp	HTTP	Apache HTTP Server
-111/tcp	RPC	rpcbind
-139/tcp	NetBIOS/SMB	Samba
-445/tcp	SMB	Samba 3.0.20
-512/tcp	rexec	netkit-rsh rexecd
-513/tcp	rlogin	rlogind
-514/tcp	rsh	rshd
-1099/tcp	Java RMI	GNU Classpath
-1524/tcp	bindshell	Metasploitable root shell
-2049/tcp	NFS	NFS
-2121/tcp	FTP	ProFTPD
-3306/tcp	MySQL	MySQL 5.0.x
-3632/tcp	distcc	distccd
-5432/tcp	PostgreSQL	PostgreSQL 8.3.x
-5900/tcp	VNC	VNC
-6000/tcp	X11	X Window System
-6667/tcp	IRC	UnrealIRCd
-8009/tcp	AJP13	Apache JServ Protocol
-8180/tcp	HTTP	Apache Tomcat
+|     Порт | Служба      | Пример ПО/версии          |
+| -------: | ----------- | ------------------------- |
+|   21/tcp | FTP         | vsftpd 2.3.4              |
+|   22/tcp | SSH         | OpenSSH                   |
+|   23/tcp | Telnet      | Linux telnetd             |
+|   25/tcp | SMTP        | Postfix                   |
+|   53/tcp | DNS         | ISC BIND                  |
+|   80/tcp | HTTP        | Apache HTTP Server        |
+|  111/tcp | RPC         | rpcbind                   |
+|  139/tcp | NetBIOS/SMB | Samba                     |
+|  445/tcp | SMB         | Samba 3.0.20              |
+|  512/tcp | rexec       | netkit-rsh rexecd         |
+|  513/tcp | rlogin      | rlogind                   |
+|  514/tcp | rsh         | rshd                      |
+| 1099/tcp | Java RMI    | GNU Classpath             |
+| 1524/tcp | bindshell   | Metasploitable root shell |
+| 2049/tcp | NFS         | NFS                       |
+| 2121/tcp | FTP         | ProFTPD                   |
+| 3306/tcp | MySQL       | MySQL 5.0.x               |
+| 3632/tcp | distcc      | distccd                   |
+| 5432/tcp | PostgreSQL  | PostgreSQL 8.3.x          |
+| 5900/tcp | VNC         | VNC                       |
+| 6000/tcp | X11         | X Window System           |
+| 6667/tcp | IRC         | UnrealIRCd                |
+| 8009/tcp | AJP13       | Apache JServ Protocol     |
+| 8180/tcp | HTTP        | Apache Tomcat             |
+
 
 После определения версий запущенных служб был выполнен поиск известных уязвимостей для соответствующего ПО в Exploit Database.
 
