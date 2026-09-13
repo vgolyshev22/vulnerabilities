@@ -22,3 +22,54 @@
 Любые вопросы по выполнению заданий спрашивайте в разделе “Вопросы по заданию” в личном кабинете.
 
 Желаем успехов в выполнении домашнего задания!
+
+Задание 1
+По результатам сканирования Metasploitable были обнаружены следующие открытые TCP-порты и соответствующие им сетевые службы:
+
+Порт	Служба	Пример ПО/версии
+21/tcp	FTP	vsftpd 2.3.4
+22/tcp	SSH	OpenSSH
+23/tcp	Telnet	Linux telnetd
+25/tcp	SMTP	Postfix
+53/tcp	DNS	ISC BIND
+80/tcp	HTTP	Apache HTTP Server
+111/tcp	RPC	rpcbind
+139/tcp	NetBIOS/SMB	Samba
+445/tcp	SMB	Samba 3.0.20
+512/tcp	rexec	netkit-rsh rexecd
+513/tcp	rlogin	rlogind
+514/tcp	rsh	rshd
+1099/tcp	Java RMI	GNU Classpath
+1524/tcp	bindshell	Metasploitable root shell
+2049/tcp	NFS	NFS
+2121/tcp	FTP	ProFTPD
+3306/tcp	MySQL	MySQL 5.0.x
+3632/tcp	distcc	distccd
+5432/tcp	PostgreSQL	PostgreSQL 8.3.x
+5900/tcp	VNC	VNC
+6000/tcp	X11	X Window System
+6667/tcp	IRC	UnrealIRCd
+8009/tcp	AJP13	Apache JServ Protocol
+8180/tcp	HTTP	Apache Tomcat
+
+После определения версий запущенных служб был выполнен поиск известных уязвимостей для соответствующего ПО в Exploit Database.
+
+1. vsftpd 2.3.4 — Backdoor Command Execution
+
+На порту 21/tcp обнаружен FTP-сервер vsftpd 2.3.4. Для данной версии существует известная уязвимость, связанная с наличием вредоносного backdoor в скомпрометированной версии дистрибутива. Уязвимость позволяет получить возможность удалённого выполнения команд. Exploit-DB указывает CVE-2011-2523 и EDB-ID 17491.
+
+Exploit-DB — vsftpd 2.3.4 Backdoor Command Execution
+
+2. Samba 3.0.20 — Username Map Script Command Execution
+
+На портах 139/tcp и 445/tcp работает Samba 3.0.20. Версии Samba от 3.0.20 до 3.0.25rc3 при определённой конфигурации подвержены уязвимости username map script, позволяющей удалённо выполнить произвольную команду. Exploit-DB указывает CVE-2007-2447 и EDB-ID 16320. Для эксплуатации уязвимости аутентификация не требуется.
+
+Exploit-DB — Samba Username Map Script Command Execution
+
+3. UnrealIRCd 3.2.8.1 — Backdoor Command Execution
+
+На порту 6667/tcp обнаружен IRC-сервер UnrealIRCd. Версия UnrealIRCd 3.2.8.1 известна наличием скомпрометированного дистрибутива с backdoor, позволяющим удалённо выполнять команды. Уязвимость имеет идентификатор CVE-2010-2075, а соответствующий эксплойт в Exploit-DB — EDB-ID 16922.
+
+Exploit-DB — UnrealIRCd 3.2.8.1 Backdoor Command Execution
+
+Вывод: сканирование Metasploitable показало большое количество доступных сетевых сервисов, часть которых использует устаревшие и заведомо уязвимые версии программного обеспечения. По результатам анализа были обнаружены как минимум три потенциально критические уязвимости, позволяющие удалённое выполнение команд.
